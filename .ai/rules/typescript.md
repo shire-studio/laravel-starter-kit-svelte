@@ -26,7 +26,7 @@ Laravel Data classes are transformed automatically and do not need `#[TypeScript
 ## TypeScript consumption
 Consume generated ambient names such as `App.Data.UserData`. A local alias may improve component APIs, but it must reference the generated type rather than repeat its fields. Handwritten TypeScript types are only for frontend-owned state and component APIs.
 
-Shared contracts belong in `InertiaConfig.sharedPageProps`. Keep guest values nullable, such as `App.Data.UserData | null`. Spatie does not infer the props inside an `Inertia::render()` response, so declare page props with `defineProps` and reference generated Data types for structured values. Mirror scalar keys exactly.
+Shared contracts belong in `InertiaConfig.sharedPageProps`. Keep guest values nullable, such as `App.Data.UserData | null`. Spatie does not infer the props inside an `Inertia::render()` response, so declare page props with `$props()` and reference generated Data types for structured values. Mirror scalar keys exactly.
 
 ## Nullability and optionality
 A nullable PHP property generates a required TypeScript property whose value includes `null`. Do not represent it with `?`. Use Laravel Data's `Optional` or lazy types only when the serialized key may be absent. Carbon values are generated as strings.
